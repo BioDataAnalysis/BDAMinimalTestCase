@@ -81,7 +81,7 @@ build:macos:10.11:
   stage: build
   script:
    - cd "${CI_PROJECT_DIR}/" && rm -fr "../GIT-BDAScripts" && git clone --depth 3 "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.biodataanalysis.de/BioDataAnalysis/BDAScripts.git" "../GIT-BDAScripts" || exit 1
-   - cd "${CI_PROJECT_DIR}/client/" && if test "${BDA_MAKE_DISTCLEAN}" == "yes" ; then ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-MacOSX-10.11-Core2-x86_64' --distclean ; else ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-MacOSX-10.11-Core2-x86_64' --sysclean --build ; fi || exit 1
+   - cd "${CI_PROJECT_DIR}/" && if test "${BDA_MAKE_DISTCLEAN}" == "yes" ; then ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-MacOSX-10.11-Core2-x86_64' --distclean ; else ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-MacOSX-10.11-Core2-x86_64' --sysclean --build ; fi || exit 1
 
 build:windows7:x64:msys2:
   tags:
@@ -93,7 +93,7 @@ build:windows7:x64:msys2:
     MSYSTEM: "MINGW64"
   script:
    - D:/bda-ci/msys2/bda/usr/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/ && rm -fr ../GIT-BDAScripts && git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.biodataanalysis.de/BioDataAnalysis/BDAScripts.git ../GIT-BDAScripts || exit 1"
-   - D:/bda-ci/msys2/bda/usr/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/client/ && if test \"${BDA_MAKE_DISTCLEAN}\" == 'yes' ; then ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MinGW' --distclean ; else ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MinGW' --sysclean --build ; fi || exit 1"
+   - D:/bda-ci/msys2/bda/usr/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/ && if test \"${BDA_MAKE_DISTCLEAN}\" == 'yes' ; then ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MinGW' --distclean ; else ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MinGW' --sysclean --build ; fi || exit 1"
 
 build:windows7:x64:vs2017:
   tags:
@@ -104,5 +104,5 @@ build:windows7:x64:vs2017:
   script:
    - C:/cygwin64/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/ && rm -fr ../GIT-BDAScripts && git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.biodataanalysis.de/BioDataAnalysis/BDAScripts.git ../GIT-BDAScripts || exit 1"
    - call "D:/bda-ci/vs2017/VC/Auxiliary/Build/vcvarsall.bat" x64
-   - C:/cygwin64/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/client/ && if test \"${BDA_MAKE_DISTCLEAN}\" == 'yes' ; then ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MSVC' --distclean ; else ../../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MSVC' --sysclean --build ; fi || exit 1"
+   - C:/cygwin64/bin/bash.exe --login -c "cd ${CI_PROJECT_DIR}/ && if test \"${BDA_MAKE_DISTCLEAN}\" == 'yes' ; then ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MSVC' --distclean ; else ../GIT-BDAScripts/bin/bda-build.sh --env='bda-env-Windows-7-x64-MSVC' --sysclean --build ; fi || exit 1"
 
